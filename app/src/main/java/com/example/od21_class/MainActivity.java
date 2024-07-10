@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.od21_class.adapter.ChatAdapter;
+import com.example.od21_class.adapter.NoteAdapter;
 import com.example.od21_class.model.Note;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         loadChats();
         recyclerView = findViewById(R.id.recyclerView);
-        ChatAdapter chatAdapter =  new ChatAdapter(chatList);
+        NoteAdapter chatAdapter =  new NoteAdapter(chatList);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
