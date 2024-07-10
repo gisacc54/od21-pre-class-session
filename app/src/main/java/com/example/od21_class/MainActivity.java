@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loadChats();
+        loadNotes();
         recyclerView = findViewById(R.id.recyclerView);
         NoteAdapter chatAdapter =  new NoteAdapter(chatList);
 
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void loadChats() {
+    private void loadNotes() {
         chatList.add(new Note(1,"Ethan Kilian","Hi, How are you?"));
         chatList.add(new Note(1,"Josh Mwenda","Hi, How are you?"));
         chatList.add(new Note(1,"Anna Joshua","Hi, How are you?"));
