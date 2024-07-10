@@ -1,7 +1,6 @@
 package com.example.od21_class.adapter;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.od21_class.R;
-import com.example.od21_class.model.Chat;
+import com.example.od21_class.model.Note;
 
 import java.util.Collections;
 import java.util.List;
 
 public class ChatAdapter extends RecyclerView.Adapter<ViewHolder>  {
-    List<Chat> list =  Collections.emptyList();
-    public ChatAdapter(List<Chat> list) {
+    List<Note> list =  Collections.emptyList();
+    public ChatAdapter(List<Note> list) {
         this.list = list;
     }
 
@@ -30,7 +29,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ViewHolder>  {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        View view = inflater.inflate(R.layout.recyclerview_row, parent, false);
+        View view = inflater.inflate(R.layout.item, parent, false);
 
         ViewHolder holder = new ViewHolder(view);
         return holder;
@@ -38,14 +37,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ViewHolder>  {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final Chat chat = list.get(position);
-        holder.title.setText(chat.getSenderName());
-        holder.message.setText(chat.getSenderMessage());
-        holder.profileImage.setImageResource(chat.getSenderProfile());
+        final Note chat = list.get(position);
+        holder.title.setText(chat.getTitle());
+        holder.body.setText(chat.getBody());
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Name: "+chat.getSenderName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), "Name: "+chat.getTitle(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -58,15 +56,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ViewHolder>  {
 }
 
 class ViewHolder extends RecyclerView.ViewHolder {
-    ImageView profileImage;
-    TextView title, message;
+    TextView title, body;
     View view;
 
     public ViewHolder(@NonNull View itemView) {
         super(itemView);
-        profileImage = itemView.findViewById(R.id.profileImage);
         title = itemView.findViewById(R.id.title);
-        message = itemView.findViewById(R.id.message);
+        body = itemView.findViewById(R.id.body);
         view = itemView;
     }
 }
